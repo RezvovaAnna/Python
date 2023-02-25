@@ -6,3 +6,12 @@
 123 -> 6 (1 + 2 + 3)
 100 -> 1 (1 + 0 + 0)
 """
+number = str(input("Введите число: "))
+len_number = len(number)
+res = [int(x) for a, x in enumerate(str(number))]
+i = 0
+sum_of_elem = 0
+while i < len_number:
+   sum_of_elem = sum_of_elem + res[i]
+   i+= 1
+print("Сумма элементов в числе: ", sum_of_elem
