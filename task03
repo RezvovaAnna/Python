@@ -8,3 +8,11 @@
 Введите число n: 3
 n + nn + nnn = 369
 """
+n = str(input('Введите число n: '))
+two_n = n + n
+three_n = n + n + n
+two_n = int(two_n)
+three_n = int(three_n)
+n = int(n)
+sum_of_n = two_n + three_n + n
+print('n + nn + nnn =', sum_of_n)
