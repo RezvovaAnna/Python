@@ -6,3 +6,11 @@
 385916 -> yes
 123456 -> no
 """
+ticket = int(input("Введите номер билета: "))
+res = [int(x) for a, x in enumerate(str(ticket))]
+left = res[0] + res[1] + res[2]
+right = res[3] + res[4] + res[5]
+if left == right:
+    print("Билет счастливый")
+else:
+    print("Билет несчастливый")
