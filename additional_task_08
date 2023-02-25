@@ -6,3 +6,16 @@
 3 2 4 -> yes
 3 2 1 -> no
 """
+width = int(input("Введите ширину шоколадки: "))
+length_chocolate = int(input("Введите длину шоколадки: "))
+part = int(input("Надо отломить долек: "))
+if width or length_chocolate > 1:
+    if part % 2 == 0 and part < length_chocolate * width:
+        print("Получится")
+    else:
+        print("Не получится")
+else:
+    if part < length_chocolate * width:
+        print("Получится")
+    else:
+        print("Не получится")
