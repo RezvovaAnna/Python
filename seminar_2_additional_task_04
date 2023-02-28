@@ -11,3 +11,8 @@
 Введите целые числа через пробел: 1 2 3
 Результат: 2 1 3
 """
+spisok = (input("Введите числа через пробел: ")).split()
+print(spisok)
+for i in range(0, len(spisok)-1, 2):
+    spisok[i], spisok[i+1] = spisok[i+1], spisok[i]
+print(spisok)
