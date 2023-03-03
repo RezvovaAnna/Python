@@ -8,3 +8,12 @@
     3
     -> 1
 """
+number_n = int(input("Введите число:"))
+list_n = []
+n = number_n
+import random
+for i in range(n):
+    list_n.append(random.randint(0, 99))
+print(list_n)
+number_x = int(input("Введите число x:"))
+print(f" Число x встречается в списке {list_n.count(number_x)} раз(а)")
