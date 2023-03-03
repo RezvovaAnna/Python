@@ -8,3 +8,21 @@
     6
     -> 5
 """
+import random
+number_n = int(input("Введите число: "))
+list_n = []
+n = number_n
+for i in range(n):
+    list_n.append(random.randint(0, 99))
+print(list_n)
+list_n.sort(reverse=True)
+number_x = int(input("Введите число x: "))
+i = list_n.index(number_x)
+if i == 0:
+    print(f"Ближайшее число к x {list_n[1]}")
+elif i == number_n - 1:
+    print(f"Ближайшее число к x {list_n[i-1]}")
+elif list_n[i-1] - list_n[i] > list_n[i] - list_n[i + 1]:
+    print(f"Ближайшее число к x {list_n[i + 1]}")
+elif list_n[i-1] - list_n[i] <= list_n[i] - list_n[i + 1]:
+    print(f"Ближайшее число к x {list_n[i - 1]}")
