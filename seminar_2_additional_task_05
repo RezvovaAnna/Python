@@ -14,3 +14,10 @@
 1. раз
 2. перерефриж
 """
+words = (input("Введите слова через запятую: "))
+spisok = words.split()
+i = 0
+while i < len(spisok):
+    print(spisok[i][0:10])
+    print()
+    i += 1

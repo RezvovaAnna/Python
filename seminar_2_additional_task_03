@@ -14,3 +14,6 @@
 <class 'bool'>
 <class 'NoneType'>
 """
+n = [5, "string", 0.15, True, None]
+print(f"n - {type(n)}: {n[0]} - {type(n[0])}, {n[1]} - {type(n[1])}, {n[2]} - {type(n[2])}," 
+      f"{n[3]} - {type(n[3])}, {n[4]} - {type(n[4])}")

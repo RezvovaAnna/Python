@@ -3,3 +3,18 @@
 Определите минимальное число монеток, которые нужно перевернуть, чтобы все монетки были повернуты вверх одной и той же стороной. 
 Выведите минимальное количество монет, которые нужно перевернуть/
 """
+import random
+number_of_coins = []
+n = int(input("Сколько монет лежит на столе?: "))
+for i in range(n):
+    number_of_coins.append(random.randint(0, 1))
+h_coins = number_of_coins.count(1)
+t_coins = n - h_coins
+print(number_of_coins)
+print(f"Орел:{h_coins}. Решка:{t_coins}")
+if h_coins > t_coins:
+    print(f"Проще перевернуть {t_coins}, выпавших решкой")
+else:
+    print(f"Проще перевернуть {h_coins}, выпавших орлом")
+if h_coins == t_coins:
+    print("Без разницы, что переворачивать.")
