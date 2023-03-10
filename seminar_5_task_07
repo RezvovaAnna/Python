@@ -10,3 +10,19 @@
 Правой части выражения в рекурсивной ф-ции быть не должно!
 Решите через рекурсию. В задании нельзя применять циклы.
 """
+
+
+def check_equation(n):
+    sum = 0
+    if n == 1:
+        return n + sum
+    while n > 1:
+        sum = sum + n
+        return sum + check_equation(n - 1)
+
+
+num = int(input("Введите число "))
+print(f"1+2+...+n = {check_equation(num)}")
+equation = int((num * (num + 1)) / 2)
+print(f"n(n+1)/2 = {equation}")
+print({check_equation(num)} == {equation})
