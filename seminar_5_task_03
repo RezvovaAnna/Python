@@ -15,3 +15,25 @@
 Не забудьте проверить на числе, которое оканчивается на 0.
 1230 -> 0321
 """
+import math
+
+
+def revers_num(num):
+    if num < 0:
+      return num
+    if num == 0:
+      return 0
+    count = 0
+    num_2 = num
+    while num_2 > 0:
+        count = count + 1
+        num_2 = num_2 // 10
+        last_num = num % 10
+        revers = last_num * int(math.pow(10, count - 1))
+
+    return revers + revers_num(num // 10)
+
+
+number = int(input("Введите число: "))
+res = revers_num(number)
+print(res)
