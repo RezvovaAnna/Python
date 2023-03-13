@@ -3,3 +3,19 @@
 Формула для получения n-го члена прогрессии: an = a1 + (n-1) * d.
 Каждое число вводится с новой строки.
 """
+
+def arithmet_progres(num, diff, k):
+    progres = []
+    progres.append(num)
+    count = 1
+    while count <= k:
+        a = progres[count - 1] + (((count + 1) - 1) * diff)
+        progres.append(a)
+        count += 1
+        k -= 1
+    return progres
+
+num = int(input("Введите первый элемент прогрессии"))
+diff = int(input("Введите разность прогрессии: "))
+k = 10
+print(arithmet_progres(num, diff, k))
