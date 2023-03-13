@@ -3,3 +3,40 @@
 которые встречаются в обоих наборах. Пользователь вводит 2 числа. n - кол-во элементов первого множества. m - кол-во элементов второго множества. 
 Затем пользователь вводит сами элементы множеств.
 """
+import cProfile
+import time
+
+def list_creator(number):
+    list_in = []
+    i = 0
+    while i < number:
+        j = int(input())
+        list_in.append(j)
+        i += 1
+        if i == number:
+            break
+    return list_in
+
+
+
+def list_res(list_1, list_2):
+    list_1 = list(set(list_1))
+    list_2 = list(set(list_2))
+    list_all = list_1 + list_2
+    dub = [x for i, x in enumerate(list_all) if i != list_all.index(x)]
+    return dub
+
+
+number_one = int(input('Сколько элемментов в множестве №1?: '))
+list_one = list_creator(number_one)
+number = int(input('Сколько элемментов в множестве №2?: '))
+list_two = list_creator(number)
+print(list_one)
+print(list_two)
+list_three = list_res(list_one, list_two)
+list_three.sort()
+print(f"Первое множество: {list_one}")
+print(f"Второе множество: {list_two}")
+print(f"Повторяющиеся элементы: {list_three}")
+
+cProfile.run('list_res(list_one, list_two)')
