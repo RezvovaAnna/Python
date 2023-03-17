@@ -13,6 +13,7 @@
 
 Проверить работу примера, создав экземпляр и вызвав описанный метод.
 """
+
 import time
 
 
@@ -48,3 +49,4 @@ class TrafficLight:
 colr = input("Какой цвет вы видите: ")
 obj_1 = TrafficLight(colr)
 obj_1._running_(colr)
+=======
