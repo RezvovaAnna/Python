@@ -1,0 +1,42 @@
+"""
+Реализовать базовый класс Worker (работник),
+в котором определить публичные атрибуты name, surname, position (должность),
+и защищенный атрибут income (доход). Последний атрибут должен ссылаться
+на словарь, содержащий элементы: оклад и премия, например, {"wage": wage, "bonus": bonus}.
+
+Создать класс Position (должность) на базе класса Worker. В классе Position реализовать публичные методы
+получения полного имени сотрудника (get_full_name) и дохода с учетом премии (get_total_income).
+
+Проверить работу примера на реальных данных (создать экземпляры класса Position, передать данные,
+проверить значения атрибутов, вызвать методы экземпляров).
+
+П.С. попытайтесь добить вывода информации о сотруднике также через перегрузку str
+str(self) - вызывается функциями str, print и format. Возвращает строковое представление объекта.
+"""
+class Worker:
+
+    def __init__(self, name, surname, position, wage, bonus):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self._income = {'wage': wage, 'bonus': bonus}
+        print(
+            f"Создан профиль сотрудника {self.name} {self.surname}, {self._income} ")
+
+
+class Position(Worker):
+
+    def _get_full_name_(self):
+        return self.name + ' ' + self.surname
+
+    def _get_total_income_(self):
+        return self._income['wage'] + self._income['bonus']
+
+
+name_worker = input("Имя сотрудника: ")
+surname_worker = input("Фамилия сотрудника: ")
+posit_worker = input("Должность сотрудника: ")
+wage_worker = float(input("Оклад сотрудника: "))
+bonus_worker = float(input("Премия сотрудника: "))
+worker_1 = Position(name_worker, surname_worker, posit_worker, wage_worker, bonus_worker)
+print(f'Сотрудник {worker_1._get_full_name_()}. Зарплата:{worker_1._get_total_income_()}.')
