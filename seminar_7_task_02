@@ -1,0 +1,38 @@
+16 lines (12 sloc)  1015 Bytes
+
+"""
+Реализовать класс Road (дорога), в котором определить защищенные атрибуты:
+length (длина в метрах), width (ширина в метрах).
+
+Значения данных атрибутов должны передаваться при создании экземпляра класса.
+
+Реализовать публичный метод расчета массы асфальта, необходимого для покрытия
+всего дорожного полотна.
+
+Использовать формулу: длина * ширина * масса асфальта для покрытия одного кв
+метра дороги асфальтом, толщиной в 1 см * число м толщины полотна.
+Массу и толщину сделать публичными атрибутами.
+Проверить работу метода.
+
+Например: 20м*5000м*25кг*0.05м = 125000 кг = 125 т
+"""
+
+class Road:
+
+    def __init__(self, length, width, weight_per_m):
+        self.__length = length
+        self.__width = width
+        self._weight_per_m = weight_per_m
+
+    def _cal_weight_(self, thickness):
+        total_weight = self.__length * self.__width * thickness * self._weight_per_m
+        return total_weight
+
+
+len_road = float(input("Длина дороги в метрах: "))
+width_road = float(input("Ширина дороги в метрах: "))
+weight_m_road = float(input("Масса в кг асфальта для покрытия одного кв метра толщиной в 1 см: "))
+thick_road = float(input("Толщина полотна в метрах: "))
+road_1 = Road(len_road, width_road, weight_m_road)
+res = road_1._cal_weight_(thick_road)
+print(f"Потребуется {res / 1000} тонн асфальта")
