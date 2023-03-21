@@ -1,0 +1,16 @@
+import json
+
+
+def write_order_to_json(item, quantity, price, byer, data):
+    order = {'item': item, 'quantity': quantity, 'price': price,
+             'byer': byer,'date': data}
+    with open('result.txt', 'w') as file:
+        json.load(order, file)
+
+
+item = int(input('Товар: '))
+quant = int(input('Количество: '))
+price = float(input('Цена: '))
+byer = int(input('Покупатель: '))
+data = (input('Дата: '))
+write_order_to_json(item, quant, price, byer, data)
