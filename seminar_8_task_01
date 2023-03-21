@@ -35,3 +35,47 @@ os_code_list, os_type_list. В этой же функции создать гл�
 
 Обязательно проверьте, что у вас получается примерно то же самое.
 """
+import csv
+import re
+
+
+def get_data(file_list):
+    os_prod_list = []
+    os_name_list = []
+    os_code_list = []
+    os_type_list = []
+    main_data = [['Изготовитель системы', 'Название ОС', 'Код продукта', 'Тип системы']]
+    for file in file_list:
+        data = open(file)
+        for row in data:
+            row = row.rstrip()
+            if re.match('Изготовитель системы', row):
+                os_prod_list.append(re.search(r'(Изготовитель системы).\s*(.*)', row).group(2))
+            elif re.match('Название ОС', row):
+                os_name_list.append(re.search(r'(Название ОС).\s*(.*)', row).group(2))
+            elif re.match('Код продукта', row):
+                os_code_list.append(re.search(r'(Код продукта).\s*(.*)', row).group(2))
+            elif re.match('Тип системы', row):
+                os_type_list.append(re.search(r'(Тип системы).\s*(.*)', row).group(2))
+        data.close()
+    for k in range(len(list_file)):
+        main_data.append([os_prod_list[k], os_name_list[k], os_code_list[k], os_type_list[k]])
+    return main_data
+
+
+
+def write_to_csv(file, data):
+    with open(file, 'w') as f_n:
+        f_n_writer = csv.writer(f_n)
+        for nrow in data:
+            f_n_writer.writerow(nrow)
+
+list_file = 'info_1.txt','info_2.txt', 'info_3.txt'
+res  = get_data(list_file)
+print(res)
+write_to_csv('result.csv', res)
+with open('result.csv') as f_n:
+    F_N_READER = csv.reader(f_n)
+    print(type(F_N_READER))
+    for row in F_N_READER:
+        print(row)
