@@ -1,3 +1,8 @@
+
+"""
+реализовать метакласс. позволяющий создавать всегда один и тот же объект класса (см. урок)
+"""
+
 class Singleton(type):
     def __init__(self, *args, **kwargs):
         self.__instance = None
@@ -37,3 +42,4 @@ print(f'{book_2.name} {book_2.author} это {book_3.name} {book_3.author} — '
 
 book_3 = Book("Кошки и аллергия", 543, 'Тамара Тренкова', 'науч-поп')
 print(f'{book_2.name} {book_2.author} это {book_3.name} {book_3.author} — ', book_2 is book_3)
+
