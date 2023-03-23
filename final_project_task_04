@@ -8,3 +8,14 @@
 Подсказки:
 --- используйте списки и циклы, не дублируйте функции
 """
+list_word = ['разработка', 'администрирование', 'protocol', 'standard']
+for el in list_word:
+    print(f"{type(el)} - {el}")
+print("\n")
+list_1 = [el.encode('utf-8') for el in list_word]
+for el in list_1:
+    print(f"{type(el)} - {el}")
+print("\n")
+list_2 = [el.decode('utf-8') for el in list_1]
+for el in list_2:
+    print(f"{type(el)} - {el}")
