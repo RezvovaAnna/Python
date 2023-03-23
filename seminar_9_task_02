@@ -1,0 +1,39 @@
+class Singleton(type):
+    def __init__(self, *args, **kwargs):
+        self.__instance = None
+        super().__init__(*args, **kwargs)
+
+    def __call__(self, *args, **kwargs):
+        if self.__instance is None:
+            self.__instance = super().__call__(*args, **kwargs)
+            return self.__instance
+        else:
+            return self.__instance
+
+class Book(metaclass=Singleton):
+
+    def __init__(self, name, value, author, genre):
+        self.name = name
+        self.value_pages = value
+        self.author = author
+        self.genre = genre
+        print(f"Создан объект: книга: {self.name} автор: {self.author},"
+              f"количество страниц: {self.value_pages}, жанр: {self.genre}")
+
+
+class Book_clone(metaclass=Singleton):
+
+    def __init__(self, name, value, author, genre):
+        self.name = name
+        self.value_pages = value
+        self.author = author
+        self.genre = genre
+        print(f"Создан клон-объект: книга: {self.name} автор: {self.author},"
+              f"количество страниц: {self.value_pages}, жанр: {self.genre}")
+
+book_2 = Book("Кошки и аллергия", 543, 'Тамара Тренкова', 'науч-поп')
+book_3 = Book_clone("Кошки и аллергия", 543, 'Тамара Тренкова', 'науч-поп')
+print(f'{book_2.name} {book_2.author} это {book_3.name} {book_3.author} — ', book_2 is book_3)
+
+book_3 = Book("Кошки и аллергия", 543, 'Тамара Тренкова', 'науч-поп')
+print(f'{book_2.name} {book_2.author} это {book_3.name} {book_3.author} — ', book_2 is book_3)
