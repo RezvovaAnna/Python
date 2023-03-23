@@ -1,0 +1,60 @@
+class NonNegative:
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.my_attr]
+
+    def __set__(self, instance, value):
+        if value <= 0:
+            raise ValueError("Значение не может быть 0 или отрициательным")
+        instance.__dict__[self.my_attr] = value
+
+    def __delete__(self, instance):
+        del instance.__dict__[self.my_attr]
+
+    def __set_name__(self, owner, my_attr):
+        self.my_attr = my_attr
+
+
+class TypedProperty:
+    def __init__(self, name, type_name, default=None):
+        self.name = "_" + name
+        self.type = type_name
+        self.default = default if default else type_name()
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name, self.default)
+
+    def __set__(self, instance, value):
+        if not isinstance(value, self.type):
+            raise TypeError(f"Значение должно быть типа {self.type}")
+        setattr(instance, self.name, value)
+
+
+class Book:
+
+    value = NonNegative()
+
+    def __init__(self, name, value, author, genre):
+        self.name = name
+        self.value_pages = value
+        self.author = author
+        self.genre = genre
+        print(f"Создан объект: книга: {self.name} автор: {self.author},"
+              f"количество страниц: {self.value_pages}, жанр: {self.genre}")
+
+
+class Author:
+
+    name = TypedProperty("name", str)
+    date_of_birth = TypedProperty("date_of_birth", int)
+    def __init__(self, name, date_of_birth):
+        self.name = name
+        self.date_of_birth = date_of_birth
+        print(f"Создан объект: автор: {self.name}, год рождения: {self.date_of_birth}")
+
+
+book_1 = Book("Стихи", 234, 'Андрей Лысяков', 'поэзия')
+book_2 = Book("Кошки и аллергия", 0, 'Тамара Тренкова', 'науч-поп')
+author_1 = Author("Андрей Лысяков", 1975)
+book_2.value = 0
+# author_2 = Author(1991,"Тамара Тренкова")
