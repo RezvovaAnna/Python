@@ -9,3 +9,13 @@
 --- обязательно!!! усложните задачу, "отловив" исключение,
 придумайте как это сделать
 """
+list_word = ['attribute', 'класс', 'функция', 'type']
+list_except = []
+for el in list_word:
+    try:
+        el = bytes(el, encoding='ascii')
+    except UnicodeEncodeError:
+        list_except.append(el)
+    else:
+        print(f'{el} - {type(el)}')
+print(f'Исключения: {list_except}')
